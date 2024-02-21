@@ -47,7 +47,28 @@ func auto_vigenere_test() {
 	// fmt.Println(b64Dec)
 }
 
+func extended_vigenere_test() {
+	str := []byte("qwertyUIOP ASDFGHJKL ZXCVBNM 12#45^&")
+	key := "HELLOHIWHATISUP"
+	fmt.Println(string(str))
+
+	encrypt := ciphers.ExtendedVigenereEncrypt(str, key)
+	fmt.Println(string(encrypt))
+
+	decrypt := ciphers.ExtendedVigenereDecrypt(encrypt, key)
+	fmt.Println(string(decrypt))
+
+	// b64Orig := base64.StdEncoding.EncodeToString(str)
+	// b64Enc := base64.StdEncoding.EncodeToString(encrypt)
+	// b64Dec := base64.StdEncoding.EncodeToString(decrypt)
+
+	// fmt.Println(b64Orig)
+	// fmt.Println(b64Enc)
+	// fmt.Println(b64Dec)
+}
+
 func main() {
 	// vigenere_test()
-	auto_vigenere_test()
+	// auto_vigenere_test()
+	extended_vigenere_test()
 }
