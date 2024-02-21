@@ -27,7 +27,7 @@ func vigenere_test() {
 }
 
 func auto_vigenere_test() {
-	str := []byte("QWERTYUIOPASDFGHJKLZXCVBNM")
+	str := []byte("qwertyUIOPASDFGHJKLZXCVBNM")
 	fmt.Println(string(str))
 	str = ciphers.Sanitize(str)
 	fmt.Println(string(str))
