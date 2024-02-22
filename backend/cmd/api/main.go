@@ -84,8 +84,8 @@ func playfair_test() {
 	encrypt := ciphers.PlayfairEncrypt(str, key)
 	fmt.Println(string(encrypt))
 
-	// decrypt := ciphers.PlayfairDecrypt(encrypt, key)
-	// fmt.Println(string(decrypt))
+	decrypt := ciphers.PlayfairDecrypt(encrypt, key)
+	fmt.Println(string(decrypt))
 
 	// fmt.Println("\nBASE64")
 

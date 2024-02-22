@@ -137,6 +137,62 @@ func PlayfairEncrypt(s []byte, key string) []byte {
 	return result
 }
 
-func PlayfairDecrypt(s []byte, key string) {
+func PlayfairDecrypt(s []byte, key string) []byte {
+	table := generateTable(key)
+	for i := 0; i < 5; i++ {
+		fmt.Println(string(table[i][:]))
+	}
 
+	type pair [2]byte
+	var pairs []pair
+
+	for i := 0; i < len(s); i += 2 {
+		var p pair
+		p[0] = s[i]
+		p[1] = s[i+1]
+		pairs = append(pairs, p)
+	}
+	for _, el := range pairs {
+		fmt.Println(string(el[:]))
+	}
+
+	var result []byte
+	for _, p := range pairs {
+		i1, j1 := getLoc(p[0], table)
+		i2, j2 := getLoc(p[1], table)
+		if j1 == j2 {
+			i1 = i1 - 1
+			if i1 < 0 {
+				i1 = 4
+			}
+			i2 = i2 - 1
+			if i2 < 0 {
+				i2 = 4
+			}
+			result = append(result, table[i1][j1])
+			result = append(result, table[i2][j2])
+		} else if i1 == i2 {
+			j1 = j1 - 1
+			if j1 < 0 {
+				j1 = 4
+			}
+			j2 = j2 - 1
+			if j2 < 0 {
+				j2 = 4
+			}
+			result = append(result, table[i1][j1])
+			result = append(result, table[i2][j2])
+		} else {
+			diff := abs(j1 - j2)
+			if j1 < j2 {
+				result = append(result, table[i1][j1+diff])
+				result = append(result, table[i2][j2-diff])
+			} else {
+				result = append(result, table[i1][j1-diff])
+				result = append(result, table[i2][j2+diff])
+			}
+		}
+	}
+
+	return result
 }
