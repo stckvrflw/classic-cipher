@@ -33,3 +33,13 @@ func Sanitize(s []byte) []byte {
 	}
 	return result
 }
+
+func modInverse(a, m int) int {
+	a = a % m
+	for x := 1; x < m; x++ {
+		if (a*x)%m == 1 {
+			return x
+		}
+	}
+	return -1
+}

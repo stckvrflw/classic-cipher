@@ -87,15 +87,15 @@ func playfair_test() {
 	decrypt := ciphers.PlayfairDecrypt(encrypt, key)
 	fmt.Println(string(decrypt))
 
-	// fmt.Println("\nBASE64")
+	fmt.Println("\nBASE64")
 
-	// b64Orig := base64.StdEncoding.EncodeToString(str)
-	// b64Enc := base64.StdEncoding.EncodeToString(encrypt)
-	// b64Dec := base64.StdEncoding.EncodeToString(decrypt)
+	b64Orig := base64.StdEncoding.EncodeToString(str)
+	b64Enc := base64.StdEncoding.EncodeToString(encrypt)
+	b64Dec := base64.StdEncoding.EncodeToString(decrypt)
 
-	// fmt.Println(b64Orig)
-	// fmt.Println(b64Enc)
-	// fmt.Println(b64Dec)
+	fmt.Println(b64Orig)
+	fmt.Println(b64Enc)
+	fmt.Println(b64Dec)
 }
 
 func affine_test() {
@@ -110,14 +110,40 @@ func affine_test() {
 	decrypt := ciphers.AffineDecrypt(encrypt, 5, 8)
 	fmt.Println(string(decrypt))
 
-	// 	fmt.Println("\nBASE64")
+	fmt.Println("\nBASE64")
 
-	// 	b64Orig := base64.StdEncoding.EncodeToString(str)
-	// 	b64Enc := base64.StdEncoding.EncodeToString(encrypt)
-	// 	b64Dec := base64.StdEncoding.EncodeToString(decrypt)
+	b64Orig := base64.StdEncoding.EncodeToString(str)
+	b64Enc := base64.StdEncoding.EncodeToString(encrypt)
+	b64Dec := base64.StdEncoding.EncodeToString(decrypt)
 
-	// fmt.Println(b64Orig)
-	// fmt.Println(b64Enc)
+	fmt.Println(b64Orig)
+	fmt.Println(b64Enc)
+	fmt.Println(b64Dec)
+}
+
+func hill_test() {
+
+	str := []byte("ACT")
+	fmt.Println(string(str))
+	key := "GYBNQKURP"
+	partition := 3
+	str = ciphers.Sanitize(str)
+	fmt.Println(string(str))
+
+	encrypt := ciphers.HillEncrypt(str, key, partition)
+	fmt.Println(string(encrypt))
+
+	// decrypt := ciphers.HillDecrypt(encrypt, key, partition)
+	// fmt.Println(string(decrypt))
+
+	fmt.Println("\nBASE64")
+
+	b64Orig := base64.StdEncoding.EncodeToString(str)
+	b64Enc := base64.StdEncoding.EncodeToString(encrypt)
+	// b64Dec := base64.StdEncoding.EncodeToString(decrypt)
+
+	fmt.Println(b64Orig)
+	fmt.Println(b64Enc)
 	// fmt.Println(b64Dec)
 }
 
@@ -126,5 +152,6 @@ func main() {
 	// auto_vigenere_test()
 	// extended_vigenere_test()
 	// playfair_test()
-	affine_test()
+	// affine_test()
+	hill_test()
 }

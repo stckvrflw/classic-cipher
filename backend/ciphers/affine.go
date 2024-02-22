@@ -1,15 +1,5 @@
 package ciphers
 
-func modInverse(a, m int) int {
-	a = a % m
-	for x := 1; x < m; x++ {
-		if (a*x)%m == 1 {
-			return x
-		}
-	}
-	return -1
-}
-
 func AffineEncrypt(s []byte, A, B int) []byte {
 	var result []byte
 	for _, char := range s {
