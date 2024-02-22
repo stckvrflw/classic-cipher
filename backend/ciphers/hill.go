@@ -32,10 +32,10 @@ func MulVectorMatrix(vector []byte, matrix [][]byte) []int {
 
 func HillEncrypt(s []byte, key string, partition int) []byte {
 	matrixKey := generateMatrixKey(key, partition)
-	// leftover := len(s) % partition
-	// if leftover != 0 {
-	// 	s = pad(s, leftover)
-	// }
+	leftover := len(s) % partition
+	if leftover != 0 {
+		s = pad(s, leftover)
+	}
 	var result []byte
 	for i := 0; i < len(s); i += partition {
 		var vector []byte
