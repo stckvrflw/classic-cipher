@@ -98,9 +98,33 @@ func playfair_test() {
 	// fmt.Println(b64Dec)
 }
 
+func affine_test() {
+	str := []byte("HELLO")
+	fmt.Println(string(str))
+	str = ciphers.Sanitize(str)
+	fmt.Println(string(str))
+
+	encrypt := ciphers.AffineEncrypt(str, 5, 8)
+	fmt.Println(string(encrypt))
+
+	decrypt := ciphers.AffineDecrypt(encrypt, 5, 8)
+	fmt.Println(string(decrypt))
+
+	// 	fmt.Println("\nBASE64")
+
+	// 	b64Orig := base64.StdEncoding.EncodeToString(str)
+	// 	b64Enc := base64.StdEncoding.EncodeToString(encrypt)
+	// 	b64Dec := base64.StdEncoding.EncodeToString(decrypt)
+
+	// fmt.Println(b64Orig)
+	// fmt.Println(b64Enc)
+	// fmt.Println(b64Dec)
+}
+
 func main() {
 	// vigenere_test()
 	// auto_vigenere_test()
 	// extended_vigenere_test()
-	playfair_test()
+	// playfair_test()
+	affine_test()
 }
