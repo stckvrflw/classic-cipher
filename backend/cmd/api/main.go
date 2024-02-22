@@ -2,6 +2,7 @@ package main
 
 import (
 	"backend/ciphers"
+	"encoding/base64"
 	"fmt"
 )
 
@@ -17,13 +18,15 @@ func vigenere_test() {
 	decrypt := ciphers.VigenereDecrypt(encrypt, key)
 	fmt.Println(string(decrypt))
 
-	// b64Orig := base64.StdEncoding.EncodeToString(str)
-	// b64Enc := base64.StdEncoding.EncodeToString(encrypt)
-	// b64Dec := base64.StdEncoding.EncodeToString(decrypt)
+	fmt.Println("\nBASE64")
 
-	// fmt.Println(b64Orig)
-	// fmt.Println(b64Enc)
-	// fmt.Println(b64Dec)
+	b64Orig := base64.StdEncoding.EncodeToString(str)
+	b64Enc := base64.StdEncoding.EncodeToString(encrypt)
+	b64Dec := base64.StdEncoding.EncodeToString(decrypt)
+
+	fmt.Println(b64Orig)
+	fmt.Println(b64Enc)
+	fmt.Println(b64Dec)
 }
 
 func auto_vigenere_test() {
@@ -38,13 +41,15 @@ func auto_vigenere_test() {
 	decrypt := ciphers.AutoVigenereDecrypt(encrypt)
 	fmt.Println(string(decrypt))
 
-	// b64Orig := base64.StdEncoding.EncodeToString(str)
-	// b64Enc := base64.StdEncoding.EncodeToString(encrypt)
-	// b64Dec := base64.StdEncoding.EncodeToString(decrypt)
+	fmt.Println("\nBASE64")
 
-	// fmt.Println(b64Orig)
-	// fmt.Println(b64Enc)
-	// fmt.Println(b64Dec)
+	b64Orig := base64.StdEncoding.EncodeToString(str)
+	b64Enc := base64.StdEncoding.EncodeToString(encrypt)
+	b64Dec := base64.StdEncoding.EncodeToString(decrypt)
+
+	fmt.Println(b64Orig)
+	fmt.Println(b64Enc)
+	fmt.Println(b64Dec)
 }
 
 func extended_vigenere_test() {
@@ -58,6 +63,32 @@ func extended_vigenere_test() {
 	decrypt := ciphers.ExtendedVigenereDecrypt(encrypt, key)
 	fmt.Println(string(decrypt))
 
+	fmt.Println("\nBASE64")
+
+	b64Orig := base64.StdEncoding.EncodeToString(str)
+	b64Enc := base64.StdEncoding.EncodeToString(encrypt)
+	b64Dec := base64.StdEncoding.EncodeToString(decrypt)
+
+	fmt.Println(b64Orig)
+	fmt.Println(b64Enc)
+	fmt.Println(b64Dec)
+}
+
+func playfair_test() {
+	str := []byte("instrumentsz")
+	key := "MONARCHY"
+	fmt.Println(string(str))
+	str = ciphers.Sanitize(str)
+	fmt.Println(string(str))
+
+	encrypt := ciphers.PlayfairEncrypt(str, key)
+	fmt.Println(string(encrypt))
+
+	// decrypt := ciphers.PlayfairDecrypt(encrypt, key)
+	// fmt.Println(string(decrypt))
+
+	// fmt.Println("\nBASE64")
+
 	// b64Orig := base64.StdEncoding.EncodeToString(str)
 	// b64Enc := base64.StdEncoding.EncodeToString(encrypt)
 	// b64Dec := base64.StdEncoding.EncodeToString(decrypt)
@@ -70,5 +101,6 @@ func extended_vigenere_test() {
 func main() {
 	// vigenere_test()
 	// auto_vigenere_test()
-	extended_vigenere_test()
+	// extended_vigenere_test()
+	playfair_test()
 }
