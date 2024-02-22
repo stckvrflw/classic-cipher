@@ -1,9 +1,5 @@
 package ciphers
 
-import (
-	"fmt"
-)
-
 var alphabets = []byte{'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'}
 
 func inTable(table [5][5]byte, val byte) bool {
@@ -83,9 +79,9 @@ func generateTable(key string) [5][5]byte {
 
 func PlayfairEncrypt(s []byte, key string) []byte {
 	table := generateTable(key)
-	for i := 0; i < 5; i++ {
-		fmt.Println(string(table[i][:]))
-	}
+	// for i := 0; i < 5; i++ {
+	// 	fmt.Println(string(table[i][:]))
+	// }
 
 	type pair [2]byte
 	var pairs []pair
@@ -108,9 +104,9 @@ func PlayfairEncrypt(s []byte, key string) []byte {
 		}
 		pairs = append(pairs, p)
 	}
-	for _, el := range pairs {
-		fmt.Println(string(el[:]))
-	}
+	// for _, el := range pairs {
+	// 	fmt.Println(string(el[:]))
+	// }
 
 	var result []byte
 	for _, p := range pairs {
@@ -139,9 +135,9 @@ func PlayfairEncrypt(s []byte, key string) []byte {
 
 func PlayfairDecrypt(s []byte, key string) []byte {
 	table := generateTable(key)
-	for i := 0; i < 5; i++ {
-		fmt.Println(string(table[i][:]))
-	}
+	// for i := 0; i < 5; i++ {
+	// 	fmt.Println(string(table[i][:]))
+	// }
 
 	type pair [2]byte
 	var pairs []pair
@@ -152,9 +148,9 @@ func PlayfairDecrypt(s []byte, key string) []byte {
 		p[1] = s[i+1]
 		pairs = append(pairs, p)
 	}
-	for _, el := range pairs {
-		fmt.Println(string(el[:]))
-	}
+	// for _, el := range pairs {
+	// 	fmt.Println(string(el[:]))
+	// }
 
 	var result []byte
 	for _, p := range pairs {
